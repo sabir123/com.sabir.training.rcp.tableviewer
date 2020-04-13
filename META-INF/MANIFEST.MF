@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Withview
+Bundle-SymbolicName: com.sabir.training.rcp.tableviewer;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.sab.eclipse.rcp.withview.Activator
+Bundle-Vendor: SAB
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.apache.felix.scr,
+ org.eclipse.equinox.util,
+ org.eclipse.equinox.event
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Automatic-Module-Name: com.sab.eclipse.rcp.withview
+Import-Package: javax.inject
+Bundle-ActivationPolicy: lazy
