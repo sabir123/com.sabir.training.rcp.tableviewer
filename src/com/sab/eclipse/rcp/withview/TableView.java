@@ -27,7 +27,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.part.ViewPart;
 
 
-public class View extends ViewPart {
+public class TableView extends ViewPart {
 	public static final String ID = "com.sab.eclipse.rcp.withview.view";
 
 	@Inject IWorkbench workbench;
@@ -45,21 +45,7 @@ public class View extends ViewPart {
 
 	}
 
-//	@Override
-//	public void createPartControl(Composite parent) {
-//		viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-//		viewer.getTable().setLinesVisible(true);
-//
-//		TableViewerColumn column = new TableViewerColumn(viewer, SWT.NONE);
-//		column.setLabelProvider(new StringLabelProvider());
-//
-//		viewer.getTable().getColumn(0).setWidth(200);
-//		
-//		viewer.setContentProvider(ArrayContentProvider.getInstance());
-//		
-//		// Provide the input to the ContentProvider
-//		viewer.setInput(createDataModel());
-//	}
+
 	
 	 public void createPartControl(Composite parent) {
 	        GridLayout layout = new GridLayout(2, false);
@@ -111,8 +97,8 @@ public class View extends ViewPart {
 
 	// This will create the columns for the table
 	    private void createColumns(final Composite parent, final TableViewer viewer) {
-	        String[] titles = { "First name", "Last name", "Age"};
-	        int[] bounds = { 100, 100, 100 };
+	        String[] titles = { "First name", "Last name", "Full Name " , "Age"};
+	        int[] bounds = { 100, 100, 200 ,100 };
 
 	        // First column is for the first name
 	        TableViewerColumn col = createTableViewerColumn(titles[0], bounds[0], 0);
@@ -133,9 +119,20 @@ public class View extends ViewPart {
 	                return p.getLastName();
 	            }
 	        });
-
-	        // now the gender
+	        
+	        // Second column is for the last name
 	        col = createTableViewerColumn(titles[2], bounds[2], 2);
+	        col.setLabelProvider(new ColumnLabelProvider() {
+	            @Override
+	            public String getText(Object element) {
+	                Person p = (Person) element;
+	                return p.getFirstName() + " " +p.getLastName();
+	            }
+	        });
+	        
+
+	        // now the age
+	        col = createTableViewerColumn(titles[3], bounds[3], 3);
 	        col.setLabelProvider(new ColumnLabelProvider() {
 	            @Override
 	            public String getText(Object element) {
