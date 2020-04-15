@@ -22,7 +22,7 @@
    <extension
          point="org.eclipse.ui.views">
       <view
-            class="com.sab.eclipse.rcp.withview.View"
+            class="com.sab.eclipse.rcp.withview.TableView"
             name="RCP Table Viewer"
             id="com.sab.eclipse.rcp.withview.view"
             inject="true">
